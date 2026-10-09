@@ -9,8 +9,8 @@ services:
     ports:
       - "8080:8000"
     environment:
-      APP_ENV: production
-      APP_DEBUG: 'false'
+      APP_ENV: local
+      APP_DEBUG: 'true'
       APP_KEY: 'base64:XkP6+L/5jI0M6t4d/m2vU+YlH41B1m41O9m41O9m41O='
       SESSION_DRIVER: 'cookie'
       CACHE_STORE: 'array'
