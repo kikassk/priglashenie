@@ -1,10 +1,13 @@
 FROM php:8.3-cli-bookworm
 
-# Install system dependencies
+# Install system dependencies & Node.js
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libzip-dev \
+    curl \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && docker-php-ext-install zip \
     && rm -rf /var/lib/apt/lists/*
 
@@ -15,6 +18,8 @@ WORKDIR /var/www
 COPY . /var/www
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction \
+    && npm ci \
+    && npm run build \
     && touch /tmp/database.sqlite
 
 EXPOSE 8000
