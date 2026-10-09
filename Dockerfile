@@ -14,7 +14,8 @@ WORKDIR /var/www
 
 COPY . /var/www
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-interaction \
+    && touch /tmp/database.sqlite
 
 EXPOSE 8000
 
