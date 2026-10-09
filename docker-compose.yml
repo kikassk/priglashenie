@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: katya-20th-birthday
+    container_name: katya-birthday-app
+    restart: unless-stopped
+    ports:
+      - "8080:8000"
+    environment:
+      APP_ENV: production
+      APP_DEBUG: 'false'
+      APP_KEY: 'base64:XkP6+L/5jI0M6t4d/m2vU+YlH41B1m41O9m41O9m41O='
+    volumes:
+      - .:/var/www
