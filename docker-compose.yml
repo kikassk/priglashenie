@@ -12,5 +12,3 @@ services:
       APP_ENV: production
       APP_DEBUG: 'false'
       APP_KEY: 'base64:XkP6+L/5jI0M6t4d/m2vU+YlH41B1m41O9m41O9m41O='
-    volumes:
-      - .:/var/www
