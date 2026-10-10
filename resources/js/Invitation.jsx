@@ -14,13 +14,13 @@ import { MapPin, ArrowDown, Heart, Presentation, Footprints, Sparkles, UtensilsC
 
 export default function Invitation() {
   const defaultPhotos = {
-    hero: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop',
-    venue: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop',
-    dressCode1: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop',
-    dressCode2: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop',
-    dressCode3: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop',
-    dressCode4: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1000&auto=format&fit=crop',
-    footer: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1000&auto=format&fit=crop',
+    hero: '/images/hero.jpg',
+    venue: '/images/venue.png',
+    dressCode1: '/images/dress1.jpg',
+    dressCode2: '/images/dress2.jpg',
+    dressCode3: '/images/dress3.jpg',
+    dressCode4: '/images/dress4.jpg',
+    footer: '/images/footer.jpg',
   };
 
   const timelineEvents = [
