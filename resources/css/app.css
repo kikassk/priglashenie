@@ -1,99 +1,1761 @@
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
+/* Kudry Headline — локальный файл (public/fonts), OFL license */
 @font-face {
   font-family: 'KudryHeadline';
-  src: url('https://fonts.cdnfonts.com/s/93123/KudryHeadline-Headline.woff') format('woff');
+  src: url('/fonts/KudryHeadline.woff2') format('woff2'),
+       url('/fonts/KudryHeadline.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --bg-main: #FAF7F2;
-  --text-dark: #2A1B12;
-  --accent-gold: #C4A482;
-  --accent-mocha: #B5937E;
-  --card-light: rgba(255, 255, 255, 0.85);
+  --bg-milk: #FAF7F2;
+  --bg-cream: #F3EADC;
+  --bg-blush: #F6EFE6;
+  --ink: #2A1B12;
+  --ink-soft: #6E5A47;
+  --ink-faint: #9A8570;
+  --line: #E7DBCA;
+  --line-soft: #EFE6D8;
+  --gold: #C4A482;
+  --gold-deep: #A9885F;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #FAF7F2;
-  color: #2A1B12;
+  background-color: var(--bg-milk);
+  color: var(--ink);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Kudry font for big letters / headings / uppercase titles */
-h1, h2, h3, h4, .font-kudry, .uppercase-heading {
-  font-family: 'KudryHeadline', 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+/* Kudry — только заголовки, названия разделов и декоративные надписи */
+.font-kudry {
+  font-family: 'KudryHeadline', 'Playfair Display', Georgia, serif;
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* Serif font for italic elegant scripts & subtitles */
-.font-serif-italic {
-  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  font-style: italic;
+/* Мягкая карточка на молочном фоне — без тяжёлых теней и бликов */
+.paper-card {
+  background: rgba(255, 253, 249, 0.72);
+  border: 1px solid var(--line);
 }
 
-/* Inter font for small letters / body text */
-p, span, li, button, input, textarea, label, .font-inter {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+/* Тонкие разделители */
+.hairline {
+  border: 0;
+  border-top: 1px solid var(--line);
 }
 
-.font-handwriting {
-  font-family: 'Alex Brush', cursive;
+.hairline-soft {
+  border: 0;
+  border-top: 1px solid var(--line-soft);
 }
 
-/* Glassmorphism & Soft Ambient Glows */
-.glass-card {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(229, 217, 205, 0.7);
-  box-shadow: 0 12px 32px -8px rgba(42, 27, 18, 0.05);
+/* Маленькая декоративная точка-орнамент */
+.ornament-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: var(--gold);
+  animation: dot-twinkle 3.6s ease-in-out infinite;
 }
 
-.glass-card-dark {
-  background: rgba(32, 22, 16, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+/* Подпись мелким капслоком (Inter) */
+.eyebrow {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
-.mocha-banner {
-  background: linear-gradient(135deg, #BD9B85 0%, #A68570 100%);
-  box-shadow: 0 20px 40px -10px rgba(166, 133, 112, 0.3);
+/* Вертикальная надпись (календарь) */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
 }
 
-/* Custom Animated Soundbars for Audio Player */
+/* Анимации */
 @keyframes barPulse {
   0%, 100% { height: 4px; }
-  50% { height: 16px; }
+  50% { height: 14px; }
 }
 
 .animate-bar-1 { animation: barPulse 1s ease-in-out infinite; }
 .animate-bar-2 { animation: barPulse 1.2s ease-in-out infinite 0.2s; }
 .animate-bar-3 { animation: barPulse 0.8s ease-in-out infinite 0.4s; }
 
-/* Gentle Down-Arrow Bounce Animation */
 @keyframes floatBounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+  50% { transform: translateY(6px); }
 }
 
 .animate-float {
-  animation: floatBounce 2.5s ease-in-out infinite;
+  animation: floatBounce 2.8s ease-in-out infinite;
 }
 
-/* Custom Scrollbar */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
+}
+
+/* Скроллбар */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: var(--bg-milk);
 }
 ::-webkit-scrollbar-thumb {
-  background: #C4A482;
+  background: #DCCBB4;
   border-radius: 3px;
 }
+
+/* ————— Появление при скролле ————— */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ————— Вход при загрузке ————— */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-rise {
+  animation: rise-in 1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes fade-scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fade-scale {
+  animation: fade-scale-in 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Медленный наплыв на hero-фото */
+@keyframes ken-burns {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.06) translate(-1%, -1%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+.animate-kenburns {
+  animation: ken-burns 22s ease-in-out infinite;
+}
+
+/* Мягкое появление цифр таймера при смене значения */
+@keyframes digit-tick {
+  from { opacity: 0.25; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-digit {
+  animation: digit-tick 0.5s ease-out;
+  display: inline-block;
+}
+
+/* Пульс вокруг выбранного дня в календаре */
+@keyframes day-halo {
+  0% { box-shadow: 0 0 0 0 rgba(196, 164, 130, 0.45); }
+  70% { box-shadow: 0 0 0 9px rgba(196, 164, 130, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(196, 164, 130, 0); }
+}
+.animate-halo {
+  animation: day-halo 2.6s ease-out infinite;
+}
+
+/* Мягкое покачивание бейджа и орнаментов */
+@keyframes gentle-sway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(1.5deg); }
+}
+.animate-sway {
+  animation: gentle-sway 5s ease-in-out infinite;
+}
+
+/* ————— 3D-сцена (общая) ————— */
+.scene3d {
+  position: relative;
+  perspective: 780px;
+  width: 164px;
+  height: 164px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+}
+/* Мягкое золотое гало за моделью */
+.scene3d::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 148px;
+  height: 148px;
+  margin: -74px 0 0 -74px;
+  border-radius: 50%;
+  border: 1px dashed rgba(196, 164, 130, 0.4);
+  animation: orbit-spin 26s linear infinite;
+  pointer-events: none;
+}
+/* Мягкая тень под моделью — пульсирует с «парением» */
+.scene3d::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 96px;
+  height: 16px;
+  margin-left: -48px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(42, 27, 18, 0.16) 0%, rgba(42, 27, 18, 0) 70%);
+  animation: shadow-breathe 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shadow-breathe {
+  0%, 100% { transform: scaleX(0.9); opacity: 0.65; }
+  50% { transform: scaleX(1.08); opacity: 1; }
+}
+.scene3d--flower {
+  width: 154px;
+  height: 172px;
+}
+.scene3d--flower::before {
+  width: 138px;
+  height: 138px;
+  margin: -69px 0 0 -69px;
+  border-color: rgba(201, 123, 99, 0.35);
+}
+.scene3d--flower::after {
+  background: radial-gradient(ellipse, rgba(150, 90, 70, 0.14) 0%, rgba(150, 90, 70, 0) 70%);
+}
+@media (max-width: 420px) {
+  .scene3d {
+    width: 138px;
+    height: 138px;
+    zoom: 0.86;
+  }
+  .scene3d--flower {
+    width: 130px;
+    height: 148px;
+  }
+}
+/* Контейнер SVG-иллюстрации внутри 3D-сцены */
+.art-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.art-wrap svg {
+  display: block;
+  overflow: visible;
+}
+.art-wrap .art-float--money {
+  width: 168px;
+  height: 143px;
+}
+.art-wrap--flower .art-float--flower {
+  width: 150px;
+  height: 188px;
+}
+
+/* Парение иллюстрации */
+.art-float {
+  animation: art-float-y 6s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+.art-float--flower {
+  animation: art-float-y 7s ease-in-out infinite;
+}
+@keyframes art-float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* Turntable: мягкое вращение вокруг вертикальной оси — «витрина», всё ровно */
+.art-wrap--turn {
+  transform-style: preserve-3d;
+  animation: art-turn-osc 11s ease-in-out infinite;
+}
+@keyframes art-turn-osc {
+  0%, 100% { transform: rotateY(-15deg); }
+  50% { transform: rotateY(15deg); }
+}
+
+/* Головка розы — медленное вращение спирали */
+.art-rose-head {
+  transform-origin: 100px 100px;
+  animation: art-rose-spin 40s linear infinite;
+}
+@keyframes art-rose-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Листья — лёгкое покачивание */
+.art-leaf {
+  transform-origin: 98px 184px;
+  animation: art-leaf-sway 7s ease-in-out infinite;
+}
+.art-leaf--r {
+  transform-origin: 102px 200px;
+  animation-delay: 0.8s;
+  animation-direction: reverse;
+}
+@keyframes art-leaf-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(4deg); }
+}
+
+/* Печать — мягкое свечение */
+.art-seal {
+  animation: art-seal-glow 4.5s ease-in-out infinite;
+}
+@keyframes art-seal-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(196, 164, 130, 0)); }
+  50% { filter: drop-shadow(0 0 5px rgba(196, 164, 130, 0.65)); }
+}
+
+/* Монетки — лёгкое « мерцание» металла */
+.art-coins {
+  animation: art-coins-shine 5s ease-in-out infinite;
+}
+@keyframes art-coins-shine {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.08); }
+}
+
+/* ————— Инро: конверт при входе на сайт ————— */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FAF7F2;
+  cursor: pointer;
+  outline: none;
+  transition: opacity 1.1s ease 0.5s, transform 1.3s cubic-bezier(0.5, 0, 0.75, 0.4) 0.5s, filter 1.1s ease 0.5s;
+}
+.intro-overlay:focus-visible {
+  box-shadow: inset 0 0 0 2px #C4A482;
+}
+/* Финал: камера «влетает» в золотой свет из конверта */
+.intro-overlay.intro--opening {
+  opacity: 0;
+  transform: scale(2.1);
+  filter: brightness(1.55);
+  pointer-events: none;
+}
+
+.intro-scene {
+  perspective: 1100px;
+  position: relative;
+}
+
+/* Конверт: парит и мягко поворачивается по вертикальной оси */
+.intro-env {
+  position: relative;
+  width: 310px;
+  height: 205px;
+  transform-style: preserve-3d;
+  animation: intro-env-live 8s ease-in-out infinite;
+  transition: transform 0.7s ease;
+}
+@keyframes intro-env-live {
+  0%, 100% { transform: translateY(0) rotateY(-13deg) rotateX(3deg); }
+  50% { transform: translateY(-14px) rotateY(13deg) rotateX(1deg); }
+}
+/* Конверт вздрагивает и чуть увеличивается в момент открытия */
+.intro--opening .intro-env {
+  animation: none;
+  transform: translateY(-18px) scale(1.05) rotateX(0deg) rotateY(0deg);
+}
+
+/* Двойное золотое свечение изнутри */
+.intro-env__glow {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 320px;
+  height: 320px;
+  margin: -160px 0 0 -160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 196, 132, 0.55) 0%, rgba(226, 196, 132, 0) 65%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 1.2s ease 0.12s, transform 1.4s ease 0.12s;
+  pointer-events: none;
+  z-index: 0;
+}
+.intro-env__glow--2 {
+  width: 420px;
+  height: 420px;
+  margin: -210px 0 0 -210px;
+  background: radial-gradient(circle, rgba(244, 226, 184, 0.4) 0%, rgba(244, 226, 184, 0) 60%);
+  transition-delay: 0.3s;
+}
+.intro--opening .intro-env__glow {
+  opacity: 1;
+  transform: scale(1.55);
+}
+.intro--opening .intro-env__glow--2 {
+  opacity: 0.9;
+  transform: scale(1.4);
+}
+
+/* Письмо внутри — выезжает вверх с наклоном, как будто его достают */
+.intro-env__letter {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  height: 124px;
+  background: linear-gradient(165deg, #FFFDF8 0%, #F8F1E4 100%);
+  border: 1px solid #E7DBCA;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(42, 27, 18, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 22px;
+  z-index: 1;
+  transform: translateY(48px);
+  transition: transform 1.15s cubic-bezier(0.3, 1.25, 0.35, 1) 0.1s;
+}
+.intro--opening .intro-env__letter {
+  transform: translateY(-72px) rotateX(10deg);
+}
+.intro-env__letter-text {
+  font-family: 'KudryHeadline', Georgia, serif;
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  color: #A9885F;
+}
+.intro-env__letter-line {
+  width: 46px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C4A482, transparent);
+}
+
+/* Тело конверта */
+.intro-env__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 142px;
+  background:
+    linear-gradient(115deg, rgba(255, 252, 244, 0.65) 0%, rgba(255, 252, 244, 0) 45%),
+    linear-gradient(160deg, #FBF3E4 0%, #F2E4C8 55%, #E8D6B2 100%);
+  border: 1.5px solid #C4A482;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 -10px 20px rgba(184, 146, 84, 0.16),
+    0 12px 28px rgba(42, 27, 18, 0.12);
+  z-index: 2;
+  transform: translateZ(0.5px);
+}
+.intro-env__folds {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Клапан — треугольник, пружинно открывается вокруг верхней кромки */
+.intro-env__flap {
+  position: absolute;
+  top: 63px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, #F7EDD6 0%, #EBD9B4 100%);
+  border: 1.5px solid #C4A482;
+  border-top: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transform: translateZ(1.5px) rotateX(0deg);
+  transition: transform 1.1s cubic-bezier(0.3, 1.45, 0.4, 1);
+  z-index: 3;
+}
+.intro--opening .intro-env__flap {
+  transform: translateZ(1.5px) rotateX(-162deg);
+}
+
+/* Сургучная печать «20» на кончике клапана */
+.intro-env__seal {
+  position: absolute;
+  left: 50%;
+  bottom: -17px;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 30%, #FDF8EF 0%, #EBD9B4 100%);
+  border: 1.5px solid #C4A482;
+  font-family: 'KudryHeadline', Georgia, serif;
+  font-size: 18px;
+  color: #A9885F;
+  box-shadow: 0 3px 8px rgba(42, 27, 18, 0.12);
+  animation: intro-seal-glow 3.2s ease-in-out infinite;
+}
+@keyframes intro-seal-glow {
+  0%, 100% { box-shadow: 0 3px 8px rgba(42, 27, 18, 0.12); }
+  50% { box-shadow: 0 3px 8px rgba(42, 27, 18, 0.12), 0 0 18px 5px rgba(196, 164, 130, 0.55); }
+}
+
+/* Вспышка искр из конверта при открытии */
+.intro-burst {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 0;
+  height: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+.intro-burst__p {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF6E0 0%, #E4CBA4 45%, rgba(196, 164, 130, 0) 75%);
+  opacity: 0;
+}
+.intro--opening .intro-burst__p {
+  animation: intro-burst-fly 1.15s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+@keyframes intro-burst-fly {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.3); }
+  18% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--tx, 80px), var(--ty, -40px)) scale(1.1); }
+}
+
+/* Подсказка */
+.intro-hint {
+  margin-top: 44px;
+  font-family: 'KudryHeadline', Georgia, serif;
+  font-size: 17px;
+  letter-spacing: 0.16em;
+  color: #A9885F;
+  animation: intro-hint-pulse 2.8s ease-in-out infinite;
+  transition: opacity 0.35s ease;
+}
+.intro--opening .intro-hint {
+  opacity: 0;
+}
+@keyframes intro-hint-pulse {
+  0%, 100% { opacity: 0.55; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* Появление сайта: из золотого света — волна-блиск + мягкий подъём */
+.site-ready {
+  animation: site-enter 1.25s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+.site-ready::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: linear-gradient(
+    105deg,
+    transparent 28%,
+    rgba(255, 248, 230, 0.65) 46%,
+    rgba(226, 196, 132, 0.45) 52%,
+    transparent 70%
+  );
+  background-size: 260% 100%;
+  background-position: 125% 0;
+  animation: site-sheen 1.5s ease forwards;
+  pointer-events: none;
+}
+@keyframes site-enter {
+  0% { opacity: 0; transform: translateY(26px) scale(1.04); filter: brightness(1.2); }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+@keyframes site-sheen {
+  0% { background-position: 125% 0; opacity: 1; }
+  85% { opacity: 0.7; }
+  100% { background-position: -65% 0; opacity: 0; }
+}
+@media (max-width: 400px) {
+  .intro-scene {
+    zoom: 0.82;
+  }
+  .intro-hint {
+    margin-top: 30px;
+  }
+}
+
+/* ————— 3D-конверт с деньгами (анфас, всё внутри силуэта) ————— */
+.money3d {
+  position: relative;
+  width: 132px;
+  height: 126px;
+  transform-style: preserve-3d;
+  animation: money-tilt 9s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes money-tilt {
+  0%, 100% { transform: translateY(0) rotateY(-14deg) rotateX(6deg); }
+  50% { transform: translateY(-8px) rotateY(14deg) rotateX(3deg); }
+}
+
+/* Тело конверта */
+.money3d__body {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 120px;
+  height: 78px;
+  margin-left: -60px;
+  border: 1px solid #C4A482;
+  border-radius: 3px;
+  background:
+    linear-gradient(115deg, rgba(255, 252, 244, 0.7) 0%, rgba(255, 252, 244, 0) 42%),
+    linear-gradient(160deg, #FBF3E4 0%, #F2E4C8 55%, #E8D6B2 100%);
+  box-shadow:
+    inset 0 -6px 12px rgba(184, 146, 84, 0.18),
+    0 2px 4px rgba(42, 27, 18, 0.08);
+  z-index: 2;
+  transform: translateZ(0.5px);
+}
+
+/* Клапан — треугольник, открывается вокруг верхней кромки */
+.money3d__flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: linear-gradient(180deg, #F7EDD6 0%, #EBD9B4 100%);
+  border: 1px solid #C4A482;
+  border-top: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  z-index: 3;
+  transform-origin: top center;
+  transform: translateZ(1px);
+  animation: flap-open 8s ease-in-out infinite;
+}
+@keyframes flap-open {
+  0%, 12% { transform: translateZ(1px) rotateX(0deg); }
+  32%, 64% { transform: translateZ(1px) rotateX(-152deg); }
+  86%, 100% { transform: translateZ(1px) rotateX(0deg); }
+}
+.money3d__flap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 32%, rgba(255, 253, 245, 0.9) 47%, rgba(226, 203, 164, 0.65) 54%, transparent 68%);
+  background-size: 300% 100%;
+  background-position: 130% 0;
+  animation: sheen-slide 4.5s ease-in-out infinite 1.4s;
+  pointer-events: none;
+}
+@keyframes sheen-slide {
+  0% { background-position: 130% 0; }
+  60%, 100% { background-position: -70% 0; }
+}
+
+/* Печать «20» на кончике клапана */
+.money3d__seal {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 26px;
+  height: 26px;
+  margin-left: -13px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'KudryHeadline', Georgia, serif;
+  font-size: 11px;
+  color: var(--gold-deep);
+  background: radial-gradient(circle at 35% 30%, #FDF8EF 0%, #F3E8D4 100%);
+  transform: translateZ(1px);
+  animation: seal-glow 4.5s ease-in-out infinite;
+}
+@keyframes seal-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 164, 130, 0); }
+  50% { box-shadow: 0 0 12px 2px rgba(196, 164, 130, 0.55); }
+}
+
+/* Купюры — выглядывают из верхнего края конверта, веером */
+.money3d__notes {
+  position: absolute;
+  left: 50%;
+  bottom: 52px;
+  width: 100px;
+  height: 48px;
+  margin-left: -50px;
+  z-index: 1;
+  transform: translateZ(-1px);
+}
+.money3d__note {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 88px;
+  height: 44px;
+  margin-left: -44px;
+  border: 1px solid #C4A482;
+  border-radius: 2px;
+  background:
+    linear-gradient(115deg, rgba(255, 253, 245, 0.7) 0%, rgba(255, 253, 245, 0) 40%),
+    linear-gradient(135deg, #F6EDD6 0%, #EAD9B4 55%, #DCC79E 100%);
+  box-shadow: inset 0 -4px 8px rgba(184, 146, 84, 0.15);
+}
+.money3d__note::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 146, 84, 0.55), transparent);
+}
+.money3d__note--l {
+  transform: translateX(-10px) rotate(-8deg);
+  animation: note-bob-l 8s ease-in-out infinite;
+}
+.money3d__note--c {
+  transform: translateX(1px) rotate(1deg);
+  z-index: 2;
+  animation: note-bob-c 8s ease-in-out infinite 0.5s;
+}
+.money3d__note--r {
+  transform: translateX(11px) rotate(9deg);
+  animation: note-bob-r 8s ease-in-out infinite 1s;
+}
+@keyframes note-bob-l {
+  0%, 12% { transform: translateX(-10px) rotate(-8deg) translateY(8px); }
+  36%, 62% { transform: translateX(-10px) rotate(-12deg) translateY(-14px); }
+  88%, 100% { transform: translateX(-10px) rotate(-8deg) translateY(8px); }
+}
+@keyframes note-bob-c {
+  0%, 12% { transform: translateX(1px) rotate(1deg) translateY(6px); }
+  36%, 62% { transform: translateX(1px) rotate(4deg) translateY(-20px); }
+  88%, 100% { transform: translateX(1px) rotate(1deg) translateY(6px); }
+}
+@keyframes note-bob-r {
+  0%, 12% { transform: translateX(11px) rotate(9deg) translateY(9px); }
+  36%, 62% { transform: translateX(11px) rotate(13deg) translateY(-12px); }
+  88%, 100% { transform: translateX(11px) rotate(9deg) translateY(9px); }
+}
+
+/* Объёмные монеты — стопка у нижнего правого угла, строго в границах сцены */
+.money3d__coin {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transform-style: preserve-3d;
+  z-index: 4;
+  animation: coin-spin 7s linear infinite;
+}
+.money3d__coin--a { left: 96px; bottom: 4px; }
+.money3d__coin--b { left: 110px; bottom: 12px; width: 18px; height: 18px; animation-duration: 8.5s; animation-direction: reverse; }
+.money3d__coin-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255, 250, 230, 0.85) 0%, rgba(255, 250, 230, 0) 42%),
+    radial-gradient(circle at 32% 30%, #F2DFAE 0%, #DCBB78 55%, #BE9754 100%);
+  border: 1px solid #B08C4C;
+}
+.money3d__coin-face--f { transform: translateZ(2px); }
+.money3d__coin-face--b { transform: translateZ(-2px); filter: brightness(0.92); }
+.money3d__coin-edge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5.8px;
+  height: 4px;
+  margin: -2px 0 0 -2.9px;
+  background: linear-gradient(180deg, #D2AC62 0%, #A8813F 100%);
+  transform:
+    rotateZ(calc(var(--i) * 360deg / var(--n)))
+    translateY(-11px)
+    rotateX(-90deg);
+  transform-style: preserve-3d;
+}
+.money3d__coin--b .money3d__coin-edge {
+  width: 4.7px;
+  height: 4px;
+  margin: -2px 0 0 -2.35px;
+  transform:
+    rotateZ(calc(var(--i) * 360deg / var(--n)))
+    translateY(-9px)
+    rotateX(-90deg);
+}
+@keyframes coin-spin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* ————— 3D-роза (спираль лепестков анфас) ————— */
+.flower3d {
+  position: relative;
+  width: 126px;
+  height: 164px;
+  transform-style: preserve-3d;
+  animation: flower-sway 7s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes flower-sway {
+  0%, 100% { transform: rotateZ(-2deg) translateY(0); }
+  50% { transform: rotateZ(2deg) translateY(-8px); }
+}
+
+.flower3d__stem {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 3.5px;
+  height: 102px;
+  margin-left: -1.75px;
+  background: linear-gradient(180deg, #A8B28A 0%, #8A966E 100%);
+  transform: translateZ(-4px);
+  border-radius: 2px;
+}
+.flower3d__stem::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 60%);
+  border-radius: 2px;
+}
+
+/* Листья — форма листа с прожилкой */
+.flower3d__leaf {
+  position: absolute;
+  bottom: 26px;
+  width: 32px;
+  height: 16px;
+  background: linear-gradient(135deg, #BCC49C 0%, #93A075 100%);
+  border-radius: 0 100% 0 100%;
+  transform-origin: right center;
+}
+.flower3d__leaf::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  right: 7px;
+  top: 50%;
+  height: 1px;
+  background: rgba(255, 252, 244, 0.5);
+  border-radius: 1px;
+  transform: rotate(-10deg);
+}
+.flower3d__leaf--l {
+  left: calc(50% - 33px);
+  transform: translateZ(-2px) rotate(18deg);
+  animation: leaf-l 7s ease-in-out infinite;
+}
+.flower3d__leaf--r {
+  left: 50%;
+  bottom: 40px;
+  transform-origin: left center;
+  transform: translateZ(-2px) scaleX(-1) rotate(18deg);
+  animation: leaf-r 7s ease-in-out infinite 0.6s;
+}
+@keyframes leaf-l {
+  0%, 100% { transform: translateZ(-2px) rotate(18deg); }
+  50% { transform: translateZ(-2px) rotate(26deg); }
+}
+@keyframes leaf-r {
+  0%, 100% { transform: translateZ(-2px) scaleX(-1) rotate(18deg); }
+  50% { transform: translateZ(-2px) scaleX(-1) rotate(26deg); }
+}
+
+/* Головка розы — медленное вращение спирали */
+.flower3d__bloom {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  width: 102px;
+  height: 102px;
+  margin-left: -51px;
+  transform-style: preserve-3d;
+  animation: bloom-turn 40s linear infinite;
+}
+@keyframes bloom-turn {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(360deg); }
+}
+
+/* Лепесток-«капля»: основание у центра бутона, кончик наружу */
+.rose-petal3d {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50% 50% 42% 42% / 64% 64% 36% 36%;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+/* Внешний ярус — 8 крупных светлых лепестков */
+.rose-petal3d--o {
+  width: 30px;
+  height: 36px;
+  margin: -36px 0 0 -15px;
+  background: linear-gradient(165deg, #F8DDD0 0%, #E8B49E 55%, #D89A82 100%);
+  border: 1px solid #CE8B72;
+  box-shadow: inset -2px -4px 8px rgba(160, 90, 70, 0.22);
+  animation: rose-breathe-o 10s ease-in-out infinite;
+}
+/* Средний ярус — 8 лепестков со сдвигом */
+.rose-petal3d--m {
+  width: 23px;
+  height: 28px;
+  margin: -28px 0 0 -11.5px;
+  background: linear-gradient(165deg, #F2C9B6 0%, #DE9F85 55%, #CE8468 100%);
+  border: 1px solid #C4775B;
+  box-shadow: inset -2px -3px 7px rgba(150, 80, 60, 0.26);
+  animation: rose-breathe-m 10s ease-in-out infinite 0.4s;
+}
+/* Внутренний ярус — 5 глубоких лепестков */
+.rose-petal3d--n {
+  width: 16px;
+  height: 19px;
+  margin: -19px 0 0 -8px;
+  background: linear-gradient(165deg, #E8B098 0%, #CE7F62 55%, #BC6A4C 100%);
+  border: 1px solid #B25F43;
+  box-shadow: inset -1px -2px 5px rgba(130, 60, 40, 0.3);
+  animation: rose-breathe-n 10s ease-in-out infinite 0.8s;
+}
+@keyframes rose-breathe-o {
+  0%, 100% { transform: rotate(calc(var(--i) * 360deg / var(--n))) rotateX(8deg) scale(1); }
+  50% { transform: rotate(calc(var(--i) * 360deg / var(--n))) rotateX(14deg) scale(1.04); }
+}
+@keyframes rose-breathe-m {
+  0%, 100% { transform: rotate(calc(var(--i) * 360deg / var(--n) + 22deg)) rotateX(12deg) translateZ(5px) scale(1); }
+  50% { transform: rotate(calc(var(--i) * 360deg / var(--n) + 22deg)) rotateX(16deg) translateZ(5px) scale(1.05); }
+}
+@keyframes rose-breathe-n {
+  0%, 100% { transform: rotate(calc(var(--i) * 360deg / var(--n) + 15deg)) rotateX(16deg) translateZ(10px) scale(1); }
+  50% { transform: rotate(calc(var(--i) * 360deg / var(--n) + 15deg)) rotateX(20deg) translateZ(10px) scale(1.06); }
+}
+
+/* Плотный бутон-завиток в центре */
+.flower3d__swirl {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50% 50% 46% 46%;
+  background:
+    radial-gradient(circle at 34% 30%, rgba(255, 240, 230, 0.85) 0%, rgba(255, 240, 230, 0) 40%),
+    radial-gradient(circle at 40% 38%, #D88F72 0%, #C4705A 50%, #A85A44 100%);
+  border: 1px solid #B25F43;
+  box-shadow: inset -2px -3px 6px rgba(130, 60, 40, 0.35);
+  transform: translateZ(14px);
+  animation: swirl-pulse 5s ease-in-out infinite;
+}
+@keyframes swirl-pulse {
+  0%, 100% { transform: translateZ(14px) scale(1); }
+  50% { transform: translateZ(15px) scale(1.08); }
+}
+
+/* Лепесток, периодически «слетающий» с розы */
+.flower3d__drop-petal {
+  position: absolute;
+  left: 66%;
+  top: 36px;
+  width: 12px;
+  height: 18px;
+  border-radius: 50% 50% 44% 44% / 60% 60% 40% 40%;
+  background: linear-gradient(160deg, #F2C9B6 0%, #DE9F85 100%);
+  box-shadow: inset -1px -2px 3px rgba(150, 80, 60, 0.25);
+  opacity: 0;
+  animation: drop-petal 11s ease-in infinite 2s;
+}
+@keyframes drop-petal {
+  0%, 8% { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+  14% { opacity: 0.8; }
+  55% { opacity: 0.65; }
+  90%, 100% { opacity: 0; transform: translate(28px, 104px) rotate(230deg); }
+}
+
+/* Пыльца, поднимающаяся от бутона */
+.flower3d__pollen {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #F6E0C8 0%, rgba(196, 164, 130, 0) 70%);
+  opacity: 0;
+  animation: pollen-rise 10s ease-out infinite;
+}
+@keyframes pollen-rise {
+  0%, 12% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  24% { opacity: 0.9; }
+  60% { opacity: 0.55; transform: translate(7px, -40px) scale(1); }
+  88%, 100% { opacity: 0; transform: translate(-5px, -72px) scale(0.6); }
+}
+
+/* ————— Искры вокруг 3D-моделей ————— */
+.model-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFFDF8 0%, #E4CBA4 45%, rgba(196, 164, 130, 0) 72%);
+  pointer-events: none;
+  opacity: 0;
+  animation: sparkle-twinkle 3.6s ease-in-out infinite;
+}
+.model-sparkle--a { top: 10%; left: 16%; }
+.model-sparkle--b { top: 24%; right: 12%; width: 4px; height: 4px; animation-delay: 1.2s; }
+.model-sparkle--c { bottom: 16%; left: 28%; width: 5px; height: 5px; animation-delay: 2.4s; }
+.model-sparkle--d { bottom: 30%; right: 20%; width: 4px; height: 4px; animation-delay: 3s; }
+.model-sparkle--e { top: 40%; left: 4%; width: 4px; height: 4px; animation-delay: 1.8s; }
+.model-sparkle--f { top: 6%; right: 30%; width: 5px; height: 5px; animation-delay: 0.6s; }
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) translateY(0); }
+  38% { opacity: 1; transform: scale(1) translateY(-7px); }
+  72% { opacity: 0.15; transform: scale(0.75) translateY(-12px); }
+}
+
+/* ————— Золотой блик по заголовкам ————— */
+.gold-sheen {
+  color: transparent;
+  background-image: linear-gradient(
+    100deg,
+    #2A1B12 0%, #2A1B12 32%,
+    #C4A482 45%, #A9885F 50%,
+    #2A1B12 63%, #2A1B12 100%
+  );
+  background-size: 250% 100%;
+  background-position: 130% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-sheen-run 7s linear infinite;
+}
+@keyframes gold-sheen-run {
+  0% { background-position: 130% 0; }
+  100% { background-position: -30% 0; }
+}
+
+/* ————— Карточка вишлиста ————— */
+.wish-card {
+  background:
+    radial-gradient(130% 105% at 50% -10%, #FDF9F2 0%, #F6EFE6 55%, #F0E5D4 100%);
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s ease;
+}
+.wish-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px -28px rgba(42, 27, 18, 0.4);
+}
+.wish-col {
+  position: relative;
+  transition: background-color 0.45s ease, box-shadow 0.45s ease;
+}
+.wish-col:hover {
+  background-color: rgba(255, 253, 247, 0.65);
+  box-shadow: inset 0 0 34px rgba(196, 164, 130, 0.2);
+}
+.wish-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 34%, rgba(255, 255, 255, 0.6) 50%, transparent 66%);
+  background-size: 300% 100%;
+  background-position: 140% 0;
+  opacity: 0;
+}
+.wish-card:hover .wish-sheen {
+  opacity: 1;
+  animation: sheen-slide 1.8s ease-out;
+}
+.corner-orn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--gold);
+  pointer-events: none;
+  opacity: 0.85;
+  animation: corner-breathe 6s ease-in-out infinite;
+}
+@keyframes corner-breathe {
+  0%, 100% { opacity: 0.55; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+.corner-orn--tl { top: 11px; left: 11px; border-top: 1px solid; border-left: 1px solid; }
+.corner-orn--tr { top: 11px; right: 11px; border-top: 1px solid; border-right: 1px solid; }
+.corner-orn--bl { bottom: 11px; left: 11px; border-bottom: 1px solid; border-left: 1px solid; }
+.corner-orn--br { bottom: 11px; right: 11px; border-bottom: 1px solid; border-right: 1px solid; }
+
+/* ————— Мерцание мелких акцентов ————— */
+@keyframes dot-twinkle {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.4; }
+}
+.badge-num {
+  animation: num-glow 4.5s ease-in-out infinite;
+}
+@keyframes num-glow {
+  0%, 100% { opacity: 0.78; text-shadow: 0 0 0 rgba(196, 164, 130, 0); }
+  50% { opacity: 1; text-shadow: 0 0 9px rgba(196, 164, 130, 0.6); }
+}
+
+/* Летающие лепестки в финальном блоке */
+.petal-deco {
+  position: absolute;
+  width: 14px;
+  height: 22px;
+  border-radius: 50% 50% 46% 46%;
+  background: linear-gradient(180deg, #EFD9C4 0%, #DFBC9C 100%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.petal-deco--1 {
+  top: 14%;
+  left: 12%;
+  animation: petal-drift-1 9s ease-in-out infinite;
+}
+.petal-deco--2 {
+  top: 22%;
+  right: 14%;
+  width: 11px;
+  height: 17px;
+  animation: petal-drift-2 11s ease-in-out infinite 1.5s;
+}
+.petal-deco--3 {
+  bottom: 16%;
+  left: 20%;
+  width: 9px;
+  height: 14px;
+  opacity: 0.4;
+  animation: petal-drift-1 13s ease-in-out infinite 3s;
+}
+.petal-deco--4 {
+  top: 42%;
+  right: 8%;
+  width: 10px;
+  height: 15px;
+  opacity: 0.45;
+  animation: petal-drift-2 10s ease-in-out infinite 2s;
+}
+.petal-deco--5 {
+  bottom: 30%;
+  right: 22%;
+  width: 8px;
+  height: 12px;
+  opacity: 0.35;
+  animation: petal-drift-1 12s ease-in-out infinite 5s;
+}
+@keyframes petal-drift-1 {
+  0%, 100% { transform: translate(0, 0) rotate(12deg); }
+  33% { transform: translate(10px, -14px) rotate(40deg); }
+  66% { transform: translate(-6px, -7px) rotate(-10deg); }
+}
+@keyframes petal-drift-2 {
+  0%, 100% { transform: translate(0, 0) rotate(-16deg); }
+  50% { transform: translate(-12px, 10px) rotate(24deg); }
+}
+
+/* ————— Варианты появления при скролле ————— */
+.reveal--zoom {
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal--zoom.is-visible { opacity: 1; transform: scale(1); }
+
+.reveal--left {
+  opacity: 0;
+  transform: translateX(-34px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal--left.is-visible { opacity: 1; transform: translateX(0); }
+
+.reveal--right {
+  opacity: 0;
+  transform: translateX(34px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal--right.is-visible { opacity: 1; transform: translateX(0); }
+
+.reveal--blur {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(18px);
+  transition:
+    opacity 1s ease,
+    filter 1s ease,
+    transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal--blur.is-visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+
+/* Линия таймлайна «вырастает» сверху вниз при появлении */
+.timeline-line.reveal {
+  opacity: 1;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.timeline-line.reveal.is-visible { transform: scaleY(1); }
+
+/* ————— Фон: мягкие световые пятна и живой «воздух» ————— */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.5;
+}
+.glow-blob--1 {
+  width: 340px;
+  height: 340px;
+  top: -120px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(233, 214, 186, 0.7) 0%, rgba(250, 247, 242, 0) 70%);
+  animation: blob-drift-1 26s ease-in-out infinite;
+}
+.glow-blob--2 {
+  width: 300px;
+  height: 300px;
+  top: 38%;
+  right: -150px;
+  background: radial-gradient(circle, rgba(246, 226, 208, 0.65) 0%, rgba(250, 247, 242, 0) 70%);
+  animation: blob-drift-2 32s ease-in-out infinite 4s;
+}
+.glow-blob--3 {
+  width: 260px;
+  height: 260px;
+  bottom: -100px;
+  left: -90px;
+  background: radial-gradient(circle, rgba(226, 210, 186, 0.6) 0%, rgba(250, 247, 242, 0) 70%);
+  animation: blob-drift-3 29s ease-in-out infinite 8s;
+}
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 40px) scale(1.12); }
+}
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-45px, -35px) scale(1.1); }
+}
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -45px) scale(1.15); }
+}
+
+/* Звёзды: мерцают в пределах 0.3–1, медленно дрейфуют, никогда не пропадают */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #F3E2BC 0%, #D9BC8A 45%, rgba(196, 164, 130, 0.15) 75%, transparent 85%);
+  opacity: 0.4;
+  will-change: transform, opacity;
+  animation:
+    star-twinkle var(--dur, 6s) ease-in-out infinite var(--dl, 0s),
+    star-drift calc(var(--dur, 6s) * 2.6) ease-in-out infinite var(--dl, 0s);
+}
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+  70% { opacity: 0.55; }
+}
+@keyframes star-drift {
+  0%, 100% { transform: translate(0, 0); }
+  30% { transform: translate(7px, -11px); }
+  65% { transform: translate(-6px, 6px); }
+}
+
+/* Падающие лепестки роз — видны всегда (opacity не уходит в 0) */
+.rose-petal {
+  position: absolute;
+  top: -5%;
+  border-radius: 50% 50% 45% 45% / 62% 62% 38% 38%;
+  background:
+    linear-gradient(160deg, rgba(248, 214, 198, 0.95) 0%, #DFA88F 55%, #C97B63 100%);
+  box-shadow: inset -1px -2px 3px rgba(160, 90, 70, 0.25);
+  animation: rose-fall linear infinite;
+  will-change: transform;
+}
+@keyframes rose-fall {
+  0% { transform: translate(0, -8vh) rotate(0deg); }
+  22% { transform: translate(28px, 24vh) rotate(85deg); }
+  47% { transform: translate(-18px, 52vh) rotate(175deg); }
+  72% { transform: translate(22px, 82vh) rotate(265deg); }
+  100% { transform: translate(0, 112vh) rotate(360deg); }
+}
+
+/* Светлячки — мягкие размытые золотые огоньки, дрейфуют и дышат */
+.firefly {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 224, 178, 0.9) 0%, rgba(214, 180, 120, 0.45) 45%, rgba(196, 164, 130, 0) 75%);
+  filter: blur(2px);
+  opacity: 0.55;
+  animation:
+    firefly-drift var(--dur, 10s) ease-in-out infinite var(--dl, 0s),
+    firefly-breathe calc(var(--dur, 10s) * 0.7) ease-in-out infinite var(--dl, 0s);
+  will-change: transform, opacity;
+}
+@keyframes firefly-drift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(22px, -18px); }
+  55% { transform: translate(-16px, 14px); }
+  80% { transform: translate(12px, 8px); }
+}
+@keyframes firefly-breathe {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.8; }
+}
+
+/* Тонкие золотые колечки — медленный дрейф с вращением */
+.bg-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 164, 130, 0.45);
+  opacity: 0.5;
+  animation:
+    bg-ring-orbit var(--dur, 20s) linear infinite var(--dl, 0s),
+    bg-ring-fade calc(var(--dur, 20s) * 0.8) ease-in-out infinite var(--dl, 0s);
+  will-change: transform, opacity;
+}
+@keyframes bg-ring-orbit {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-18px, 14px) rotate(90deg); }
+  50% { transform: translate(-24px, 30px) rotate(180deg); }
+  75% { transform: translate(10px, 16px) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+@keyframes bg-ring-fade {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.65; }
+}
+
+/* Маленькие фоновые сердечки */
+.bg-heart {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, rgba(232, 180, 158, 0.75) 0%, rgba(201, 123, 99, 0.4) 60%, rgba(201, 123, 99, 0) 80%);
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  transform: rotate(-45deg);
+  opacity: 0.45;
+  animation:
+    bg-heart-drift var(--dur, 17s) ease-in-out infinite var(--dl, 0s),
+    bg-heart-fade calc(var(--dur, 17s) * 0.6) ease-in-out infinite var(--dl, 0s);
+  will-change: transform, opacity;
+}
+@keyframes bg-heart-drift {
+  0%, 100% { transform: rotate(-45deg) translate(0, 0); }
+  50% { transform: rotate(-38deg) translate(14px, -20px); }
+}
+@keyframes bg-heart-fade {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* ————— Прогресс-бар скролла ————— */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  z-index: 60;
+  background: linear-gradient(90deg, #E2CBA4 0%, #C4A482 45%, #A9885F 100%);
+  box-shadow: 0 0 8px rgba(196, 164, 130, 0.6);
+  pointer-events: none;
+}
+
+/* ————— Орнамент-разделитель ————— */
+.ornament-divider {
+  display: flex;
+  justify-content: center;
+  margin: 0.6rem 0 1.1rem;
+}
+.ornament-divider__svg {
+  width: 180px;
+  height: 12px;
+  overflow: visible;
+}
+.ornament-divider__line {
+  stroke: var(--gold);
+  stroke-width: 1;
+  stroke-dasharray: 90;
+  stroke-dashoffset: 90;
+  transition: stroke-dashoffset 1.3s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s;
+}
+.ornament-divider.is-visible .ornament-divider__line { stroke-dashoffset: 0; }
+.ornament-divider__diamond rect {
+  fill: none;
+  stroke: var(--gold-deep);
+  stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: scale(0.2) rotate(45deg);
+  transition: opacity 0.7s ease 0.7s, transform 0.7s cubic-bezier(0.34, 1.4, 0.5, 1) 0.7s;
+}
+.ornament-divider.is-visible .ornament-divider__diamond rect {
+  opacity: 1;
+  transform: scale(1) rotate(45deg);
+}
+.ornament-divider__dot {
+  fill: var(--gold);
+  opacity: 0;
+  animation: none;
+}
+.ornament-divider.is-visible .ornament-divider__dot {
+  animation: dot-twinkle 3.2s ease-in-out infinite 1s;
+}
+.ornament-divider.is-visible .ornament-divider__dot--late {
+  animation-delay: 1.5s;
+}
+
+/* ————— Сердцебиение ————— */
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.25); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.18); }
+  56% { transform: scale(1); }
+}
+.animate-heart {
+  animation: heart-beat 2.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* ————— Фото с зумом и бликом при наведении ————— */
+.photo-zoom {
+  overflow: hidden;
+  position: relative;
+}
+.photo-zoom > * {
+  transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.photo-zoom:hover > * { transform: scale(1.06); }
+.photo-zoom::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 36%, rgba(255, 255, 255, 0.35) 50%, transparent 64%);
+  background-size: 280% 100%;
+  background-position: 150% 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.photo-zoom:hover::after {
+  opacity: 1;
+  animation: sheen-slide 1.6s ease-out;
+}
+
+/* ————— Иконки программы ————— */
+.timeline-icon {
+  color: var(--gold-deep);
+  animation: icon-bob 5s ease-in-out infinite;
+}
+@keyframes icon-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* ————— Автоматический блик по виш-листу ————— */
+.wish-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 34%, rgba(255, 255, 255, 0.55) 50%, transparent 66%);
+  background-size: 300% 100%;
+  background-position: 140% 0;
+  opacity: 0.7;
+  animation: wish-sheen-auto 9s ease-in-out infinite;
+}
+@keyframes wish-sheen-auto {
+  0%, 58% { background-position: 140% 0; opacity: 0; }
+  64% { opacity: 0.7; }
+  86% { background-position: -60% 0; opacity: 0.5; }
+  92%, 100% { background-position: -80% 0; opacity: 0; }
+}
+.wish-card:hover .wish-sheen {
+  opacity: 0.9;
+  animation: sheen-slide 1.4s ease-out;
+}
+
+/* ————— Свечение финального блока ————— */
+.final-glow {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  width: 240px;
+  height: 160px;
+  margin-left: -120px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(233, 214, 186, 0.75) 0%, rgba(243, 234, 220, 0) 70%);
+  animation: final-glow-pulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes final-glow-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.94); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* ————— Пульсирующее кольцо на бейдже «20» ————— */
+.badge-ring::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 9999px;
+  border: 1px solid rgba(196, 164, 130, 0.55);
+  animation: badge-ring-pulse 3.2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes badge-ring-pulse {
+  0% { transform: scale(0.92); opacity: 0.9; }
+  70% { transform: scale(1.22); opacity: 0; }
+  100% { transform: scale(1.22); opacity: 0; }
+}
+
+/* ————— Мягкое свечение заголовков разделов ————— */
+.section-glow {
+  position: relative;
+}
+.section-glow::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220px;
+  height: 90px;
+  margin: -45px 0 0 -110px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(233, 214, 186, 0.5) 0%, rgba(250, 247, 242, 0) 70%);
+  animation: section-glow-breathe 7s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes section-glow-breathe {
+  0%, 100% { opacity: 0.4; transform: scale(0.92); }
+  50% { opacity: 0.9; transform: scale(1.06); }
+}
+
+/* ————— Автономные анимации (без наведения) ————— */
+
+/* Пульсирующие кольца на точках таймлайна */
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 9999px;
+  background: var(--bg-milk);
+  border: 1px solid var(--gold);
+}
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 1px solid rgba(196, 164, 130, 0.6);
+  animation: dot-ring-pulse 3s ease-out infinite;
+}
+@keyframes dot-ring-pulse {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  70% { transform: scale(1.7); opacity: 0; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* Периодический блик по фото (сам, без наведения) */
+.photo-auto-sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 36%, rgba(255, 255, 255, 0.4) 50%, transparent 64%);
+  background-size: 280% 100%;
+  background-position: 150% 0;
+  opacity: 0;
+  animation: auto-sheen-cycle 12s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes auto-sheen-cycle {
+  0%, 62% { background-position: 150% 0; opacity: 0; }
+  70% { opacity: 0.85; }
+  88% { background-position: -70% 0; opacity: 0.5; }
+  94%, 100% { background-position: -90% 0; opacity: 0; }
+}
+
+/* Медленное «дыхание» фото-блоков */
+.photo-breathe {
+  animation: photo-breathe 10s ease-in-out infinite;
+}
+@keyframes photo-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Золотые линии по бокам подписей-eyebrow — убраны: ломали вёрстку */
+
+/* Парящие сердечки в блоке приглашения */
+.heart-float {
+  position: absolute;
+  color: var(--gold);
+  opacity: 0;
+  animation: heart-float-up 9s ease-in-out infinite;
+  pointer-events: none;
+}
+.heart-float--1 { left: 8%; top: 46%; animation-delay: 0s; }
+.heart-float--2 { right: 10%; top: 30%; animation-delay: 3s; }
+.heart-float--3 { left: 18%; bottom: 12%; animation-delay: 6s; }
+@keyframes heart-float-up {
+  0% { opacity: 0; transform: translateY(14px) scale(0.7) rotate(-8deg); }
+  18% { opacity: 0.55; }
+  55% { opacity: 0.4; transform: translateY(-26px) scale(1) rotate(6deg); }
+  85% { opacity: 0.15; }
+  100% { opacity: 0; transform: translateY(-52px) scale(0.8) rotate(-4deg); }
+}
+
+/* Вращающееся пунктирное кольцо вокруг сердца */
+.orbit-wrap {
+  position: relative;
+  display: inline-flex;
+}
+.orbit-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  border-radius: 50%;
+  border: 1px dashed rgba(196, 164, 130, 0.75);
+  animation: orbit-spin 14s linear infinite;
+  pointer-events: none;
+}
+.orbit-ring--2 {
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border-color: rgba(196, 164, 130, 0.4);
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Мягкое свечение под таймером */
+.timer-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  height: 110px;
+  margin: -55px 0 0 -150px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(233, 214, 186, 0.55) 0%, rgba(250, 247, 242, 0) 70%);
+  animation: timer-glow-breathe 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes timer-glow-breathe {
+  0%, 100% { opacity: 0.45; transform: scale(0.94); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+/* Пульс заливки + ореола выбранного дня в календаре */
+.cal-day {
+  animation:
+    day-halo 2.6s ease-out infinite,
+    day-fill-pulse 3.6s ease-in-out infinite;
+}
+@keyframes day-fill-pulse {
+  0%, 100% { background-color: rgba(250, 247, 242, 0); }
+  50% { background-color: rgba(196, 164, 130, 0.22); }
+}
+
+/* Медленно вращающиеся декоративные кольца в финале */
+.orbit-deco {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(196, 164, 130, 0.45);
+  pointer-events: none;
+  animation: orbit-spin 26s linear infinite;
+}
+.orbit-deco--1 {
+  width: 150px;
+  height: 150px;
+  top: -46px;
+  right: -40px;
+}
+.orbit-deco--2 {
+  width: 110px;
+  height: 110px;
+  bottom: -30px;
+  left: -28px;
+  animation-duration: 34s;
+  animation-direction: reverse;
+  border-color: rgba(196, 164, 130, 0.3);
+}
+
+/* Мягкое «дыхание» точек-орнаментов на виш-карте */
+.wish-card .model-sparkle--a { animation-duration: 4.2s; }
+.wish-card .model-sparkle--c { animation-duration: 5s; }
+.wish-card .model-sparkle--d { animation-duration: 3.4s; }
+
+/* Примечание: блок prefers-reduced-motion удалён намеренно —
+   в Windows пользователя отключены системные анимации (MinAnimate=0),
+   из-за чего браузер всегда сообщал reduce и все анимации гасли. */
