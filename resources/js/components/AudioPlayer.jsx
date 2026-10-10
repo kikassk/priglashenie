@@ -12,15 +12,23 @@ export default function AudioPlayer() {
     <div className="fixed bottom-6 right-6 z-40">
       <button
         onClick={toggleAudio}
-        className={`flex items-center gap-2 px-4 py-3 rounded-full backdrop-blur-md shadow-xl border transition-all duration-300 ${
+        className={`flex items-center gap-2.5 px-4 py-3 rounded-full backdrop-blur-md shadow-xl border transition-all duration-300 ${
           isPlaying
-            ? 'bg-[#4A3326] text-white border-[#4A3326] animate-pulse'
-            : 'bg-white/80 text-[#4A3326] border-[#D5C3B5] hover:bg-white'
+            ? 'bg-[#2A1B12] text-white border-[#C4A482]'
+            : 'bg-white/85 text-[#2A1B12] border-[#E5D9CD] hover:bg-white'
         }`}
-        title={isPlaying ? "Выключить музыку" : "Включить атмосферную музыку"}
+        title={isPlaying ? "Выключить фоновую музыку" : "Включить атмосферную музыку"}
       >
-        {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
-        <span className="text-xs uppercase tracking-widest font-medium hidden sm:inline">
+        {isPlaying ? (
+          <div className="flex items-end gap-1 h-3.5">
+            <span className="w-1 bg-[#C4A482] animate-bar-1 rounded-full" />
+            <span className="w-1 bg-[#C4A482] animate-bar-2 rounded-full" />
+            <span className="w-1 bg-[#C4A482] animate-bar-3 rounded-full" />
+          </div>
+        ) : (
+          <Music size={16} className="text-[#C4A482]" />
+        )}
+        <span className="text-[11px] font-inter uppercase tracking-widest font-semibold hidden sm:inline">
           {isPlaying ? "Music On" : "Music Off"}
         </span>
       </button>

@@ -22,7 +22,7 @@ export default function CountdownTimer({ targetDate = "2026-10-18T18:00:00" }) {
   }, [targetDate]);
 
   return (
-    <div className="flex items-center justify-center gap-4 sm:gap-8 my-6">
+    <div className="flex items-center justify-center gap-3 sm:gap-6 my-6">
       {[
         { label: 'Дней', value: timeLeft.days },
         { label: 'Часов', value: timeLeft.hours },
@@ -30,10 +30,10 @@ export default function CountdownTimer({ targetDate = "2026-10-18T18:00:00" }) {
         { label: 'Секунд', value: timeLeft.seconds },
       ].map((item, idx) => (
         <div key={idx} className="flex flex-col items-center">
-          <div className="w-14 h-14 sm:w-18 sm:h-18 flex items-center justify-center rounded-full bg-white/60 backdrop-blur-md border border-[#D5C3B5]/50 shadow-sm text-lg sm:text-2xl font-serif text-[#4A3326]">
+          <div className="w-13 h-13 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl bg-white/70 backdrop-blur-md border border-[#E5D9CD] shadow-sm text-lg sm:text-2xl font-kudry font-normal text-[#2A1B12]">
             {String(item.value).padStart(2, '0')}
           </div>
-          <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[#8A6650] mt-2 font-medium">
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[#8C705C] mt-2 font-inter font-medium">
             {item.label}
           </span>
         </div>

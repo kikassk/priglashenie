@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 @font-face {
@@ -9,26 +9,36 @@
   font-display: swap;
 }
 
+:root {
+  --bg-main: #FAF7F2;
+  --text-dark: #2A1B12;
+  --accent-gold: #C4A482;
+  --accent-mocha: #B5937E;
+  --card-light: rgba(255, 255, 255, 0.85);
+}
+
 body {
   background-color: #FAF7F2;
   color: #2A1B12;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Kudry font for big letters / headings / uppercase titles */
-h1, h2, h3, h4, .font-kudry, .font-serif, .uppercase-heading {
-  font-family: 'KudryHeadline', 'Playfair Display', Georgia, serif;
+h1, h2, h3, h4, .font-kudry, .uppercase-heading {
+  font-family: 'KudryHeadline', 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Serif font for italic elegant scripts & subtitles */
+.font-serif-italic {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-style: italic;
 }
 
 /* Inter font for small letters / body text */
 p, span, li, button, input, textarea, label, .font-inter {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
-/* Preserve Kudry font override on specific elements */
-.force-kudry {
-  font-family: 'KudryHeadline', 'Playfair Display', Georgia, serif !important;
 }
 
 .font-handwriting {
@@ -37,24 +47,23 @@ p, span, li, button, input, textarea, label, .font-inter {
 
 /* Glassmorphism & Soft Ambient Glows */
 .glass-card {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(229, 217, 205, 0.6);
-  box-shadow: 0 10px 30px -5px rgba(42, 27, 18, 0.05);
+  border: 1px solid rgba(229, 217, 205, 0.7);
+  box-shadow: 0 12px 32px -8px rgba(42, 27, 18, 0.05);
 }
 
 .glass-card-dark {
-  background: rgba(26, 17, 11, 0.92);
+  background: rgba(32, 22, 16, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #2A1B12 0%, #B89B86 50%, #D4AF37 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.mocha-banner {
+  background: linear-gradient(135deg, #BD9B85 0%, #A68570 100%);
+  box-shadow: 0 20px 40px -10px rgba(166, 133, 112, 0.3);
 }
 
 /* Custom Animated Soundbars for Audio Player */
@@ -67,6 +76,16 @@ p, span, li, button, input, textarea, label, .font-inter {
 .animate-bar-2 { animation: barPulse 1.2s ease-in-out infinite 0.2s; }
 .animate-bar-3 { animation: barPulse 0.8s ease-in-out infinite 0.4s; }
 
+/* Gentle Down-Arrow Bounce Animation */
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.animate-float {
+  animation: floatBounce 2.5s ease-in-out infinite;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -75,18 +94,6 @@ p, span, li, button, input, textarea, label, .font-inter {
   background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C8B2A0;
-  border-radius: 3px;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #FAF8F5;
-}
-::-webkit-scrollbar-thumb {
-  background: #B89B86;
+  background: #C4A482;
   border-radius: 3px;
 }

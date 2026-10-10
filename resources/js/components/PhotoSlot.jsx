@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { Camera, Upload, X, RefreshCw } from 'lucide-react';
+import { Camera, RefreshCw } from 'lucide-react';
 
 export default function PhotoSlot({
   defaultSrc,
   alt = "Фотография",
   className = "",
   aspectRatio = "aspect-[3/4]",
-  label = "Изменить фото"
+  label = "Заменить фото"
 }) {
   const [imageSrc, setImageSrc] = useState(defaultSrc);
   const [isHovered, setIsHovered] = useState(false);
@@ -30,7 +30,7 @@ export default function PhotoSlot({
 
   return (
     <div
-      className={`relative group overflow-hidden rounded-xl bg-[#EFECE6] border border-[#D5C3B5]/40 transition-all duration-500 hover:shadow-2xl ${aspectRatio} ${className}`}
+      className={`relative group overflow-hidden bg-[#FAF7F2] transition-all duration-500 hover:shadow-2xl ${aspectRatio} ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -41,19 +41,19 @@ export default function PhotoSlot({
       />
 
       {/* Overlay controls on hover */}
-      <div className={`absolute inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 flex flex-col items-center justify-center gap-3 p-4 text-white ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`absolute inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 flex flex-col items-center justify-center gap-2 p-4 text-white ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full border border-white/40 text-xs tracking-wider uppercase transition-transform active:scale-95"
+          className="flex items-center gap-2 px-4 py-2 bg-white/25 hover:bg-white/40 backdrop-blur-md rounded-full border border-white/50 text-[11px] font-inter tracking-wider uppercase transition-transform active:scale-95 shadow-lg"
         >
-          <Camera size={16} />
+          <Camera size={14} />
           <span>{label}</span>
         </button>
 
         {imageSrc !== defaultSrc && (
           <button
             onClick={handleReset}
-            className="flex items-center gap-1 text-[11px] text-white/80 hover:text-white underline decoration-dashed underline-offset-4"
+            className="flex items-center gap-1 text-[10px] font-inter text-white/90 hover:text-white underline underline-offset-4"
           >
             <RefreshCw size={12} />
             <span>Сбросить</span>

@@ -2,56 +2,69 @@ import React from 'react';
 
 export default function CalendarOctober2026() {
   const daysInOct = 31;
-  const startDayOffset = 3; // Oct 1, 2026 is Thursday (0: Mon, 1: Tue, 2: Wed, 3: Thu, 4: Fri, 5: Sat, 6: Sun)
-
+  // Oct 1, 2026 is Thursday (0: Mon, 1: Tue, 2: Wed, 3: Thu, 4: Fri, 5: Sat, 6: Sun)
+  const startDayOffset = 3;
   const daysOfWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
   return (
-    <div className="bg-[#EFECE6]/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-[#D5C3B5]/60 shadow-lg text-[#2C1E16] max-w-sm mx-auto">
-      <div className="flex items-center justify-between mb-4 border-b border-[#D5C3B5]/40 pb-3">
-        <span className="font-kudry uppercase tracking-wider text-2xl sm:text-3xl text-[#2A1B12]">ОКТЯБРЬ</span>
-        <span className="font-kudry text-xl text-[#B89B86]">2026</span>
-      </div>
+    <div className="bg-[#BFA28E] text-[#2A1B12] rounded-3xl p-5 sm:p-6 shadow-xl relative overflow-hidden border border-[#A88B77]/40 flex flex-col justify-between">
+      {/* Decorative inner border */}
+      <div className="absolute inset-2 border border-white/20 rounded-2xl pointer-events-none" />
 
-      <div className="grid grid-cols-7 gap-1 text-center mb-2">
-        {daysOfWeek.map((day, i) => (
-          <span key={i} className="text-[11px] uppercase tracking-wider font-semibold text-[#8A6650]/80 py-1">
-            {day}
+      <div className="flex items-center gap-4 relative z-10">
+        {/* Left Vertical Month Label matching reference draft */}
+        <div className="writing-mode-vertical rotate-180 flex flex-col items-center justify-center border-r border-[#2A1B12]/20 pr-3 my-1">
+          <span className="font-kudry text-2xl sm:text-3xl font-normal tracking-widest text-[#2A1B12]">
+            2026
           </span>
-        ))}
-      </div>
+          <span className="font-kudry text-sm sm:text-base uppercase tracking-widest text-[#4A382C]">
+            ОКТЯБРЬ
+          </span>
+        </div>
 
-      <div className="grid grid-cols-7 gap-1 text-center text-sm font-sans">
-        {/* Empty cells before month starts */}
-        {Array.from({ length: startDayOffset }).map((_, i) => (
-          <div key={`empty-${i}`} className="p-2" />
-        ))}
+        {/* Right Days Grid */}
+        <div className="flex-1">
+          <div className="grid grid-cols-7 gap-1 text-center mb-2">
+            {daysOfWeek.map((day, i) => (
+              <span key={i} className="text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold text-[#3D291D]/80">
+                {day}
+              </span>
+            ))}
+          </div>
 
-        {/* Month days */}
-        {Array.from({ length: daysInOct }).map((_, i) => {
-          const dayNum = i + 1;
-          const isTarget = dayNum === 18;
+          <div className="grid grid-cols-7 gap-1 text-center text-xs sm:text-sm font-inter">
+            {/* Empty offset cells */}
+            {Array.from({ length: startDayOffset }).map((_, i) => (
+              <div key={`empty-${i}`} className="p-1 sm:p-1.5" />
+            ))}
 
-          return (
-            <div key={dayNum} className="relative flex items-center justify-center p-1 sm:p-2">
-              {isTarget ? (
-                <div className="relative z-10 w-8 h-8 rounded-full border-2 border-[#4A3326] bg-[#B89B86]/20 flex items-center justify-center font-bold text-[#2C1E16] animate-pulse">
-                  {dayNum}
-                  <span className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-[#4A3326]" />
+            {/* Month days */}
+            {Array.from({ length: daysInOct }).map((_, i) => {
+              const dayNum = i + 1;
+              const isTarget = dayNum === 18;
+
+              return (
+                <div key={dayNum} className="relative flex items-center justify-center p-0.5 sm:p-1">
+                  {isTarget ? (
+                    <div className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#2A1B12] bg-[#FAF7F2] text-[#2A1B12] font-bold flex items-center justify-center shadow-md">
+                      {dayNum}
+                    </div>
+                  ) : (
+                    <span className="text-[#3D291D] font-medium hover:text-[#2A1B12]">
+                      {dayNum}
+                    </span>
+                  )}
                 </div>
-              ) : (
-                <span className={`text-[#6B4D3B] hover:text-[#2C1E16] ${dayNum === 17 || dayNum === 18 ? 'font-medium' : ''}`}>
-                  {dayNum}
-                </span>
-              )}
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        </div>
       </div>
 
-      <div className="mt-4 pt-3 border-t border-[#D5C3B5]/40 text-center">
-        <p className="text-xs text-[#8A6650] italic font-serif">
-          Воскресенье, 18 Октября в 18:00
+      {/* Footer info note */}
+      <div className="mt-4 pt-3 border-t border-[#2A1B12]/15 text-center relative z-10">
+        <p className="text-xs font-inter text-[#3D291D]">
+          Время уточняется позже. Приблизит. <strong className="font-semibold text-[#2A1B12]">14:00/15:00/18:00</strong>
         </p>
       </div>
     </div>
