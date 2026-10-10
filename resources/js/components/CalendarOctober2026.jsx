@@ -9,8 +9,8 @@ export default function CalendarOctober2026() {
   return (
     <div className="bg-[#EFECE6]/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-[#D5C3B5]/60 shadow-lg text-[#2C1E16] max-w-sm mx-auto">
       <div className="flex items-center justify-between mb-4 border-b border-[#D5C3B5]/40 pb-3">
-        <span className="font-serif italic text-2xl sm:text-3xl text-[#4A3326]">Октябрь</span>
-        <span className="font-serif text-xl text-[#B89B86]">2026</span>
+        <span className="font-kudry uppercase tracking-wider text-2xl sm:text-3xl text-[#2A1B12]">ОКТЯБРЬ</span>
+        <span className="font-kudry text-xl text-[#B89B86]">2026</span>
       </div>
 
       <div className="grid grid-cols-7 gap-1 text-center mb-2">
